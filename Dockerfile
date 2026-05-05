@@ -10,7 +10,7 @@ RUN wget https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-wit
 
 COPY harness.cpp .
 
-COPY in/ ./in/
+COPY seeds/ ./in/
 
 RUN afl-clang-fast++ -fsanitize=address -O2 \
   -I./libtorch/include \
