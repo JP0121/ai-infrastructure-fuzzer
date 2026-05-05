@@ -33,21 +33,32 @@ ai-infrastructure-fuzzer/
 └── README.md
 ```
 ## 🚀 Quick Start / Deployment
-1. Build the Docker Image
+1. Clone the Repository. First, bring the code down to the local machine. Open a terminal and run:
+   ```bash
+   git clone https://github.com/JP0121/ai-infrastructure-fuzzer.git
+   cd ai-infrastructure-fuzzer
+   ```
+2. Build the Docker Image
    ```bash
    docker build -t pytorch-fuzzer .
    ```
-2. Launch the Fuzzing Node. Run the deployment script to automatically configure the host kernel and deploy the container safely:
+3. Configure the Host Kernel. Because the Docker container shares the host's underlying Linux kernel, the host must be told to allow programs to dump core memory when they crash. If this is skipped, AFL++ will refuse to start.
+   ```bash
+   sudo bash -c 'echo core > /proc/sys/kernel/core_pattern'
+   ```
+4. Launch the Fuzzing Node. Run the deployment script to automatically configure the host kernel and deploy the container safely:
    ```bash
    chmod +x run-node.sh
    ./run-node.sh
    ```
-3. Monitor the Campaign. Check the AFL++ dashboard and execution metrics directly from the running container:
+5. Monitor the Campaign. Check the AFL++ dashboard and execution metrics directly from the running container:
    ```bash
    docker exec -it fuzzer-node-1 afl-whatsup /fuzzer/out
    ```
-   Any discovered memory faults will be automatically extracted and saved locally on the host in the ./crashes directory.
-
+   📃Any discovered memory faults will be automatically extracted and saved locally on the host in the ./crashes directory.📃
+      ```bash
+      ls -la ./crashes/default/crashes/
+      ```
 ## ⚠️ Disclaimer
 This infrastructure is designed strictly for authorized security research, vulnerability discovery, and defensive engineering. All discovered vulnerabilities are subject to responsible disclosure practices.
 
