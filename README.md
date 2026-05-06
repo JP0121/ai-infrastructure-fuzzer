@@ -53,7 +53,8 @@ ai-infrastructure-fuzzer/
    ```
 5. Monitor the Campaign. Check the AFL++ dashboard and execution metrics directly from the running container:
    ```bash
-   docker exec -it fuzzer-node-1 afl-whatsup /fuzzer/out
+   Linux: docker exec -it fuzzer-node-1 afl-whatsup /fuzzer/out
+   Windows/WSL: docker exec -it fuzzer-node-1 afl-whatsup //fuzzer/out
    ```
    📃Any discovered memory faults will be automatically extracted and saved locally on the host in the ./crashes directory.📃
       ```bash
