@@ -33,7 +33,7 @@ ai-infrastructure-fuzzer/
 └── README.md
 ```
 ## 🚀 Quick Start / Deployment
-1. Clone the Repository. First, bring the code down to the local machine. Open a terminal and run:
+1. Clone the Repository. First, bring the code down to the machine. Open a terminal and run:
    ```bash
    git clone https://github.com/JP0121/ai-infrastructure-fuzzer.git
    cd ai-infrastructure-fuzzer
